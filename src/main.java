@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -33,10 +34,13 @@ public class main {
                         if (!currentDependency.trim().equals("")){
                             String [] currentDependencies = currentDependency.split(",");
                             facade.addDependencies(dependencies[i], currentDependencies);
+                        } else{
+                            String[] empty = new String[0];
+                            facade.addDependencies(dependencies[i],empty);
                         }
                     }
                     System.out.println("Here are an order to install " + name +"'s dependencies:\n");
-                    System.out.println(facade.getOrder());
+                    System.out.println(Arrays.toString(facade.getOrder()));
                 }
             } catch (NumberFormatException e){
                 System.out.println("Invalid Option\n");
