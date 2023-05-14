@@ -41,4 +41,13 @@ public class Facade {
         }
         return true;
     }
+
+    public boolean inCurrentDependency(String dependency, String[] currentDependencies) {
+        for (String dep : currentDependencies) {
+            if (dep.equals(dependency)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
