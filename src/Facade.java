@@ -31,4 +31,14 @@ public class Facade {
         }
         order.add(dependency);
     }
+
+    public boolean validDependencies(String[] dependencies, String[] currentDependencies){
+        Set<String> setDependencies = new HashSet<>(Arrays.asList(dependencies));
+        for (String item : currentDependencies) {
+            if (!setDependencies.contains(item)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
