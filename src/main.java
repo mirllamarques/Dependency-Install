@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class main {
@@ -24,7 +23,7 @@ public class main {
                     String d = scanner.nextLine();
                     String [] dependencies = d.toUpperCase().split(",");
 
-                    System.out.println("Now you will tell me wich dependency depends on wich\n" +
+                    System.out.println("Now you will tell me which dependency depends on which\n" +
                             "If any dependency has no associated dependencies just press Enter");
                     for (int i = 0; i < dependencies.length; i++){
                         System.out.println("Which are the dependency of " +
