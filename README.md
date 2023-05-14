@@ -37,7 +37,7 @@ Which are the dependency of D? (Split with comma)
 E
 Which are the dependency of E? (Split with comma)
 
-Here are an order to install Project X's dependencies:
+Here is an order to install Project X's dependencies:
 
 [B, C, A, E, D]
 ~~~
