@@ -13,21 +13,21 @@ public class Facade {
     }
 
     public String[] getOrder() {
-        List<String> order = new ArrayList<>();
-        Set<String> visited = new HashSet<>();
+        List<String> ordered = new ArrayList<>();
+        Set<String> changed = new HashSet<>();
         for (String dependency : dependencies.keySet()) {
-            visit(dependency, visited, order);
+            changePosition(dependency, changed, ordered);
         }
-        return order.toArray(new String[0]);
+        return ordered.toArray(new String[0]);
     }
 
-    private void visit(String dependency, Set<String> visited, List<String> order) {
-        if (visited.contains(dependency)) {
+    private void changePosition(String dependency, Set<String> changed, List<String> order) {
+        if (changed.contains(dependency)) {
             return;
         }
-        visited.add(dependency);
+        changed.add(dependency);
         for (String dependent : dependencies.getOrDefault(dependency, Collections.emptyList())) {
-            visit(dependent, visited, order);
+            changePosition(dependent, changed, order);
         }
         order.add(dependency);
     }
