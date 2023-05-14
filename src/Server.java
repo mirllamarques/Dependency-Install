@@ -1,14 +1,14 @@
 import java.util.*;
 
-public class Facade {
+public class Server {
 
     private Map<String, List<String>> dependencies;
 
-    public Facade(){
+    public Server() {
         this.dependencies = new HashMap<>();
     }
 
-    public void addDependencies(String dependency, String[] dependencies){
+    public void addDependencies(String dependency, String[] dependencies) {
         this.dependencies.put(dependency, Arrays.asList(dependencies));
     }
 
@@ -32,7 +32,7 @@ public class Facade {
         order.add(dependency);
     }
 
-    public boolean validDependencies(String[] dependencies, String[] currentDependencies){
+    public boolean validDependencies(String[] dependencies, String[] currentDependencies) {
         Set<String> setDependencies = new HashSet<>(Arrays.asList(dependencies));
         for (String item : currentDependencies) {
             if (!setDependencies.contains(item)) {
@@ -49,5 +49,17 @@ public class Facade {
             }
         }
         return false;
+    }
+
+    public String[] removeInvalidsInput(String[] dependencies) {
+        List<String> nonEmptyDependencies = new ArrayList<>();
+
+        for (String dep : dependencies) {
+            if (dep != null && !dep.trim().isEmpty()) {
+                nonEmptyDependencies.add(dep);
+            }
+        }
+
+        return nonEmptyDependencies.toArray(new String[0]);
     }
 }

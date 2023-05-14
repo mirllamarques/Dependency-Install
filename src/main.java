@@ -15,7 +15,7 @@ public class main {
                 if (action == 2){
                     break;
                 } else if (action == 1) {
-                    Facade facade = new Facade();
+                    Server server = new Server();
                     String name;
 
                     while (true) {
@@ -39,7 +39,8 @@ public class main {
                         }
                     }
 
-                    String[] dependencies = dependenciesSTR.toUpperCase().split(",");
+                    String[] dependencies = server.removeInvalidsInput(dependenciesSTR.toUpperCase().split(","));
+
 
                     System.out.println("\nNow you will tell me which dependency depends on which\n" +
                             "If any dependency has no associated dependencies just press Enter");
@@ -51,9 +52,9 @@ public class main {
                             String currentDependency = scanner.nextLine().toUpperCase();
                             if (!currentDependency.trim().equals("")) {
                                 String[] currentDependencies = currentDependency.split(",");
-                                if (facade.validDependencies(dependencies, currentDependencies)) {
-                                    if (!facade.inCurrentDependency(dependencies[i], currentDependencies)) {
-                                        facade.addDependencies(dependencies[i], currentDependencies);
+                                if (server.validDependencies(dependencies, currentDependencies)) {
+                                    if (!server.inCurrentDependency(dependencies[i], currentDependencies)) {
+                                        server.addDependencies(dependencies[i], currentDependencies);
                                         break;
                                     } else {
                                         System.out.println(dependencies[i] + " could not be dependent on itself\n" +
@@ -65,13 +66,13 @@ public class main {
                                 }
                             } else {
                                 String[] empty = new String[0];
-                                facade.addDependencies(dependencies[i], empty);
+                                server.addDependencies(dependencies[i], empty);
                                 break;
                             }
                         }
                     }
                     System.out.println("Here is an order to install " + name + "'s dependencies:\n");
-                    System.out.println(Arrays.toString(facade.getOrder()));
+                    System.out.println(Arrays.toString(server.getOrder()));
                 } else{
                     System.out.println("Invalid Option\n");
                 }
