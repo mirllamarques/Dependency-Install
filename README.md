@@ -1,4 +1,4 @@
-![Dependency Logo](https://github.com/mirllamarques/Dependency-Install/assets/56745829/ba4e4c93-aca4-4a18-920f-19a768ca7f6c)
+![Dependency Logo](https://github.com/mirllamarques/Dependency-Install/assets/56745829/23e30080-8ab1-4e22-989c-e69d1007a903)
 
 Welcome to Dependency Install, your dependency installation assistant. I will guide you how to install me to help your projects
 
