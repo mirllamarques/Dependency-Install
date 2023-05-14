@@ -6,24 +6,24 @@ public class main {
     public static void main(String args []){
         Scanner scanner = new Scanner(System.in);
         while (true){
-            System.out.println( "Welcome to Dependency Install, your dependency installation assistent \n" +
+            System.out.println( "Welcome to Dependency Install, your dependency installation assistant \n" +
                     "How can I help you?\n" +
                     "1- Get new project's dependencies\n" +
-                    "2- Finish");
+                    "2- Finish\n");
             try {
                 int action = Integer.parseInt(scanner.nextLine());
                 if (action == 2){
                     break;
                 } else if (action == 1){
                     Facade facade = new Facade();
-                    System.out.println("What is your project's name?\n");
+                    System.out.println("\nWhat is your project's name?\n");
                     String name = scanner.nextLine();
 
-                    System.out.println("What is your project's dependencies? (Split with comma)\n");
+                    System.out.println("\nWhat is your project's dependencies? (Split with comma)\n");
                     String d = scanner.nextLine();
                     String [] dependencies = d.toUpperCase().split(",");
 
-                    System.out.println("Now you will tell me which dependency depends on which\n" +
+                    System.out.println("\nNow you will tell me which dependency depends on which\n" +
                             "If any dependency has no associated dependencies just press Enter");
                     for (int i = 0; i < dependencies.length; i++){
                         System.out.println("Which are the dependency of " +
