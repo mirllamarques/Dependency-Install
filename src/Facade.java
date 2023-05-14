@@ -1,71 +1,34 @@
-import java.util.HashMap;
+import java.util.*;
 
 public class Facade {
 
-    private HashMap<String, String[]> dependencies;
+    private Map<String, List<String>> dependencies;
 
     public Facade(){
         this.dependencies = new HashMap<>();
     }
 
     public void addDependencies(String dependency, String[] dependencies){
-        this.dependencies.put(dependency, dependencies);
+        this.dependencies.put(dependency, Arrays.asList(dependencies));
     }
 
     public String[] getOrder() {
-        String [] keys = this.dependencies.keySet().toArray(new String[this.dependencies.keySet().size()]);
-        String[] result = new String[keys.length];
-
-        int priority = 0;
-        int noPriority =  keys.length - 1;
-
-        for (int i = 0; i < keys.length; i++){
-            String[] currentDependencies = this.dependencies.get(keys[i]);
-            if (currentDependencies.length == 0){
-                result[priority] = keys[i];
-                priority++;
-            }else {
-                if (result[noPriority] == null) {
-                    this.changePlaces(currentDependencies, result, noPriority, keys[i]);
-                }
-
-                result[noPriority] = keys[i];
-                noPriority --;
-            }
+        List<String> order = new ArrayList<>();
+        Set<String> visited = new HashSet<>();
+        for (String dependency : dependencies.keySet()) {
+            visit(dependency, visited, order);
         }
-        return result;
+        return order.toArray(new String[0]);
     }
 
-    private void changePlaces(String[] currentDependencies, String[] result, int noPriority, String key) {
-        if (!this.in(key, currentDependencies) && noPriority < 0) {
-            this.changePlaces(this.dependencies.get(result[noPriority]), result, noPriority - 1, result[noPriority - 1]);
+    private void visit(String dependency, Set<String> visited, List<String> order) {
+        if (visited.contains(dependency)) {
+            return;
         }
-        else if (noPriority >= 0) {
-            boolean dependenciesAdded = true;
-            for (String dependency : currentDependencies) {
-                if (!this.in(dependency, result)) {
-                    dependenciesAdded = false;
-                    break;
-                }
-            }
-            if (dependenciesAdded) {
-                result[noPriority] = key;
-            } else if (noPriority - 1 > 0){
-                this.changePlaces(currentDependencies, result, noPriority - 1, key);
-            }
+        visited.add(dependency);
+        for (String dependent : dependencies.getOrDefault(dependency, Collections.emptyList())) {
+            visit(dependent, visited, order);
         }
-
-    }
-
-    private boolean in (String dependency, String [] dependencies){
-        if (dependencies == null || dependency == null) {
-            return false;
-        }
-        for (String dep : dependencies) {
-            if (dep != null && dep.equals(dependency)) {
-                return true;
-            }
-        }
-        return false;
+        order.add(dependency);
     }
 }

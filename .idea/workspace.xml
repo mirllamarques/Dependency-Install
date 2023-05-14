@@ -4,7 +4,6 @@
     <list default="true" id="aacc55ca-7290-4da9-9d9a-3e74cef3e094" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dependency-Install/Facade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dependency-Install/Facade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dependency-Install/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dependency-Install/main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Facade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Facade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.java" afterDir="false" />
     </list>

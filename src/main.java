@@ -14,7 +14,7 @@ public class main {
                 int action = Integer.parseInt(scanner.nextLine());
                 if (action == 2){
                     break;
-                } else{
+                } else if (action == 1){
                     Facade facade = new Facade();
                     System.out.println("What is your project's name?\n");
                     String name = scanner.nextLine();
@@ -40,6 +40,8 @@ public class main {
                     }
                     System.out.println("Here are an order to install " + name +"'s dependencies:\n");
                     System.out.println(Arrays.toString(facade.getOrder()));
+                } else{
+                    System.out.println("Invalid Option\n");
                 }
             } catch (NumberFormatException e){
                 System.out.println("Invalid Option\n");
